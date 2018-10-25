@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class Users extends AbstractMigration
+class CreateUsers extends AbstractMigration
 {
 	/**
 	 * Change Method.
@@ -29,6 +29,11 @@ class Users extends AbstractMigration
 		]);
 
 		$table->addColumn('password', 'text', [
+			'default' => null,
+			'null' => false,
+		]);
+
+		$table->addColumn('role_id', 'integer', [
 			'default' => null,
 			'null' => false,
 		]);

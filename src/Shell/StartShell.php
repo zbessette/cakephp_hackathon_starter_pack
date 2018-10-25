@@ -2,7 +2,7 @@
 namespace App\Shell;
 
 use Cake\Console\Shell;
-
+use Cake\ORM\TableRegistry;
 /**
  * Start shell command.
  */
@@ -34,6 +34,14 @@ class StartShell extends Shell
 	public function begin() {
 		$this->dispatchShell('migrations migrate');
 
+		//Create proper roles
+		$this->Roles = TableRegistry::get('Roles');
+		$roles = [
+			$this->Roles->newEntity(['name' => 'admin', 'priority' => 1]),
+			$this->Roles->newEntity(['name' => 'user', 'priority' => 10]),
+		];
+		$this->Roles->saveMany($roles);
+		$this->out('Succesfully migrated tables and created admin and user roles.');
 	}
 
 }
