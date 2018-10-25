@@ -24,7 +24,7 @@ class UsersController extends AppController {
 			if ($user) {
 				$this->Auth->setUser($user);
 				$this->Flash->success("Logged in as " . $user['full_name']);
-				return;// $this->redirect($this->Auth->redirectUrl());
+				return;
 			}
 			$this->Flash->error('Your username or password is incorrect.');
 		}
